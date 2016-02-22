@@ -18,6 +18,8 @@
 		10AB62211BBA81E300D2A36B /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB62201BBA81E300D2A36B /* CollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		10AB62231BBA821D00D2A36B /* CellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB62221BBA821D00D2A36B /* CellCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		10AB62251BBA822300D2A36B /* emojis.json in Resources */ = {isa = PBXBuildFile; fileRef = 10AB62241BBA822300D2A36B /* emojis.json */; settings = {ASSET_TAGS = (); }; };
+		278169811BBDDD3D005465D3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2781697F1BBDDD3D005465D3 /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
+		278169821BBDDD3D005465D3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278169801BBDDD3D005465D3 /* Crashlytics.framework */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		10AB62201BBA81E300D2A36B /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		10AB62221BBA821D00D2A36B /* CellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellCollectionViewCell.swift; sourceTree = "<group>"; };
 		10AB62241BBA822300D2A36B /* emojis.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emojis.json; sourceTree = "<group>"; };
+		2781697F1BBDDD3D005465D3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		278169801BBDDD3D005465D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				278169821BBDDD3D005465D3 /* Crashlytics.framework in Frameworks */,
+				278169811BBDDD3D005465D3 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +147,8 @@
 		F205B721CE05683822446052 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				278169801BBDDD3D005465D3 /* Crashlytics.framework */,
+				2781697F1BBDDD3D005465D3 /* Fabric.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -155,6 +163,7 @@
 				1018D6951BBA7BBC00DA3993 /* Sources */,
 				1018D6961BBA7BBC00DA3993 /* Frameworks */,
 				1018D6971BBA7BBC00DA3993 /* Resources */,
+				2781697E1BBDDCE8005465D3 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -271,6 +280,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2781697E1BBDDCE8005465D3 /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Crashlytics;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 85a5cdc2d202fab9423ec9846d468b655c715e81 3f0b0a8c6de6c52157de04b8ff79b6c387805e25e8c22f849907c27e8420ca6a";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1018D6951BBA7BBC00DA3993 /* Sources */ = {
@@ -422,6 +448,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Emojirama/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.Emojirama;
@@ -434,6 +464,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Emojirama/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.Emojirama;
