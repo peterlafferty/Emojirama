@@ -45,10 +45,17 @@ public class Emojirama {
             emoji = unfilteredEmojis
         } else {
             emoji = unfilteredEmojis.filter({ (emoji:Emoji) -> Bool in
-                
+                if #available(iOS 9.0, *) {
+                    
                     return emoji.text.localizedStandardContainsString(text)
                         || emoji.tags.joinWithSeparator(", ").localizedStandardContainsString(text)
                         || text.localizedStandardContainsString(emoji.value)
+                    
+                } else {
+                    return emoji.text.containsString(text)
+                        || emoji.tags.joinWithSeparator(", ").containsString(text)
+                        || text.containsString(emoji.value)
+                }
                 
             })
         }
@@ -60,8 +67,11 @@ public class Emojirama {
         var emoji: [Emoji]
         
         emoji = unfilteredEmojis.filter({ (emoji:Emoji) -> Bool in
-            
-            return emoji.value.localizedStandardContainsString(text)
+            if #available(iOS 9.0, *) {
+                return emoji.value.localizedStandardContainsString(text)
+            } else {
+                return emoji.value.containsString(text)
+            }
             
         })
 
