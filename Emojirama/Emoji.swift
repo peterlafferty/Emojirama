@@ -1,4 +1,4 @@
-import SwiftyJSON
+import UIKit
 
 private let reuseIdentifier = "Cell"
 
@@ -12,24 +12,52 @@ struct Emoji {
     var tags: [String]
     let hasSkinTone: Bool
     
-    init?(json:JSON) {
-        self.id = json["id"].string ?? ""
-        self.value = json["value"].string ?? ""
-        self.description  = json["description"].string ?? ""
-        self.code = json["code"].string ?? ""
-        self.version = json["version"].string ?? ""
-        self.type = json["type"].string ?? ""
-        self.tags = [String]()
-        self.hasSkinTone = json["hasSkinTone"].boolValue ?? false
+    init?(_ data:NSDictionary) {
         
-        if let tags = json["tags"].array {
+        guard let id = data["id"] as? Int else {
+            return nil
+        }
+        self.id = String(id)
+        
+        guard let value = data["value"] as? String else {
+            return nil
+        }
+        self.value = value
+
+        guard let description = data["description"] as? String else {
+            return nil
+        }
+        self.description = description
+
+        guard let code = data["code"] as? String else {
+            return nil
+        }
+        self.code = code
+        
+        guard let version = data["version"] as? String else {
+            return nil
+        }
+        self.version = version
+        
+        guard let type = data["type"] as? String else {
+            return nil
+        }
+        self.type = type
+     
+        guard let hasSkinTone = data["hasSkinTone"] as? Bool else {
+            return nil
+        }
+        self.hasSkinTone = hasSkinTone
+        
+        self.tags = [String]()
+        
+        if let tags = data["tags"] as? [String] {
             for tag in tags {
-                
-                self.tags.append(tag.string ?? "")
+                if !tag.isEmpty {
+                    self.tags.append(tag)
+                }
             }
         }
-        
-        
     }
     
 }

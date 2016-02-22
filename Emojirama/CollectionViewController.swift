@@ -1,5 +1,4 @@
 import UIKit
-import SwiftyJSON
 
 class CollectionViewController: UIViewController {
     var emojis = [Emoji]()
@@ -12,7 +11,6 @@ class CollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         self.searchBar.returnKeyType = .Done
         self.searchBar.enablesReturnKeyAutomatically = false
@@ -27,15 +25,23 @@ class CollectionViewController: UIViewController {
         
         if let path = NSBundle.mainBundle().pathForResource("emojis", ofType: "json") {
             if let emojiData = NSData(contentsOfFile: path) {
-                let json = JSON(data: emojiData)
                 
-                if let contents = json.array {
-                    for content in contents {
-                        if let emoji = Emoji(json: content) {
-                            unfilteredEmojis.append(emoji)
+                do {
+                    let jsonObject = try NSJSONSerialization.JSONObjectWithData(emojiData, options: [])
+                    
+                    if let jsonDict = jsonObject as? [NSDictionary] {
+                        for value in jsonDict {
+                            if let emoji = Emoji(value) {
+                                unfilteredEmojis.append(emoji)
+                            }
                         }
                     }
+                    
+
+                } catch let error as NSError {
+                    print("Failed to load: \(error.localizedDescription)")
                 }
+                
             }
         }
 

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class ViewController: UIViewController {
     var emoji: Emoji?
