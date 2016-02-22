@@ -84,7 +84,7 @@ class ViewController: UIViewController {
             activity?.eligibleForPublicIndexing = false
             activity?.eligibleForSearch = true
             
-            activity?.title = "\(e.value): \(e.text)"
+            activity?.title = "\(e.value) - \(e.text)"
             activity?.keywords = Set(e.tags)
             activity?.keywords.insert("emoji")
             activity?.userInfo = ["emoji.value":e.value]
