@@ -27,6 +27,11 @@
 		272894871C02512D0089F090 /* emojis.json in Resources */ = {isa = PBXBuildFile; fileRef = 272894841C02512D0089F090 /* emojis.json */; };
 		278169811BBDDD3D005465D3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2781697F1BBDDD3D005465D3 /* Fabric.framework */; };
 		278169821BBDDD3D005465D3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278169801BBDDD3D005465D3 /* Crashlytics.framework */; };
+		279C276A1C064AA100408DAB /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279C27691C064AA100408DAB /* NotificationCenter.framework */; };
+		279C276D1C064AA100408DAB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279C276C1C064AA100408DAB /* TodayViewController.swift */; };
+		279C27701C064AA100408DAB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279C276E1C064AA100408DAB /* MainInterface.storyboard */; };
+		279C27741C064AA100408DAB /* Today Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 279C27681C064AA100408DAB /* Today Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		279C27791C064AF300408DAB /* EmojiramaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272894641C0250650089F090 /* EmojiramaKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +70,13 @@
 			remoteGlobalIDString = 272894631C0250650089F090;
 			remoteInfo = EmojiramaKit;
 		};
+		279C27721C064AA100408DAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1018D6911BBA7BBC00DA3993 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 279C27671C064AA100408DAB;
+			remoteInfo = "Today Extension";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +89,17 @@
 				2728947A1C0250650089F090 /* EmojiramaKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		279C27781C064AA100408DAB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				279C27741C064AA100408DAB /* Today Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -109,6 +132,11 @@
 		272894841C02512D0089F090 /* emojis.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emojis.json; sourceTree = "<group>"; };
 		2781697F1BBDDD3D005465D3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		278169801BBDDD3D005465D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		279C27681C064AA100408DAB /* Today Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Today Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		279C27691C064AA100408DAB /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		279C276C1C064AA100408DAB /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		279C276F1C064AA100408DAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		279C27711C064AA100408DAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +179,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		279C27651C064AA100408DAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279C27791C064AF300408DAB /* EmojiramaKit.framework in Frameworks */,
+				279C276A1C064AA100408DAB /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -162,6 +199,7 @@
 				1018D6BB1BBA7BBC00DA3993 /* EmojiramaUITests */,
 				272894651C0250650089F090 /* EmojiramaKit */,
 				272894731C0250650089F090 /* EmojiramaKitTests */,
+				279C276B1C064AA100408DAB /* Today Extension */,
 				1018D69A1BBA7BBC00DA3993 /* Products */,
 				F205B721CE05683822446052 /* Frameworks */,
 			);
@@ -175,6 +213,7 @@
 				1018D6B81BBA7BBC00DA3993 /* EmojiramaUITests.xctest */,
 				272894641C0250650089F090 /* EmojiramaKit.framework */,
 				2728946D1C0250650089F090 /* EmojiramaKitTests.xctest */,
+				279C27681C064AA100408DAB /* Today Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,11 +273,22 @@
 			path = EmojiramaKitTests;
 			sourceTree = "<group>";
 		};
+		279C276B1C064AA100408DAB /* Today Extension */ = {
+			isa = PBXGroup;
+			children = (
+				279C276C1C064AA100408DAB /* TodayViewController.swift */,
+				279C276E1C064AA100408DAB /* MainInterface.storyboard */,
+				279C27711C064AA100408DAB /* Info.plist */,
+			);
+			path = "Today Extension";
+			sourceTree = "<group>";
+		};
 		F205B721CE05683822446052 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				278169801BBDDD3D005465D3 /* Crashlytics.framework */,
 				2781697F1BBDDD3D005465D3 /* Fabric.framework */,
+				279C27691C064AA100408DAB /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -266,11 +316,13 @@
 				1018D6971BBA7BBC00DA3993 /* Resources */,
 				2781697E1BBDDCE8005465D3 /* Fabric/Crashlytics */,
 				272894801C0250660089F090 /* Embed Frameworks */,
+				279C27781C064AA100408DAB /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				272894781C0250650089F090 /* PBXTargetDependency */,
+				279C27731C064AA100408DAB /* PBXTargetDependency */,
 			);
 			name = Emojirama;
 			productName = Emojirama;
@@ -350,6 +402,23 @@
 			productReference = 2728946D1C0250650089F090 /* EmojiramaKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		279C27671C064AA100408DAB /* Today Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 279C27751C064AA100408DAB /* Build configuration list for PBXNativeTarget "Today Extension" */;
+			buildPhases = (
+				279C27641C064AA100408DAB /* Sources */,
+				279C27651C064AA100408DAB /* Frameworks */,
+				279C27661C064AA100408DAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Today Extension";
+			productName = "Today Extension";
+			productReference = 279C27681C064AA100408DAB /* Today Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -380,6 +449,10 @@
 						CreatedOnToolsVersion = 7.1.1;
 						TestTargetID = 1018D6981BBA7BBC00DA3993;
 					};
+					279C27671C064AA100408DAB = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = DM9UPCM3N4;
+					};
 				};
 			};
 			buildConfigurationList = 1018D6941BBA7BBC00DA3993 /* Build configuration list for PBXProject "Emojirama" */;
@@ -400,6 +473,7 @@
 				1018D6B71BBA7BBC00DA3993 /* EmojiramaUITests */,
 				272894631C0250650089F090 /* EmojiramaKit */,
 				2728946C1C0250650089F090 /* EmojiramaKitTests */,
+				279C27671C064AA100408DAB /* Today Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -442,6 +516,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		279C27661C064AA100408DAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279C27701C064AA100408DAB /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +591,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		279C27641C064AA100408DAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279C276D1C064AA100408DAB /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -537,6 +627,11 @@
 			target = 272894631C0250650089F090 /* EmojiramaKit */;
 			targetProxy = 272894771C0250650089F090 /* PBXContainerItemProxy */;
 		};
+		279C27731C064AA100408DAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 279C27671C064AA100408DAB /* Today Extension */;
+			targetProxy = 279C27721C064AA100408DAB /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -554,6 +649,14 @@
 				1018D6A61BBA7BBC00DA3993 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		279C276E1C064AA100408DAB /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				279C276F1C064AA100408DAB /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -727,6 +830,7 @@
 		2728947B1C0250660089F090 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -752,6 +856,7 @@
 		2728947C1C0250660089F090 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -796,6 +901,36 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.EmojiramaKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Emojirama.app/Emojirama";
+			};
+			name = Release;
+		};
+		279C27761C064AA100408DAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Today Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peterlafferty.Emojirama.Today-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		279C27771C064AA100408DAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				INFOPLIST_FILE = "Today Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peterlafferty.Emojirama.Today-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -855,6 +990,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		279C27751C064AA100408DAB /* Build configuration list for PBXNativeTarget "Today Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				279C27761C064AA100408DAB /* Debug */,
+				279C27771C064AA100408DAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
