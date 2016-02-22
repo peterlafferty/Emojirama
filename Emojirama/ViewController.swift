@@ -74,6 +74,12 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func copyEmoji(sender: AnyObject) {
+        guard let e = emoji else {
+            return
+        }
+        UIPasteboard.generalPasteboard().string = e.value
+    }
     
 }
 

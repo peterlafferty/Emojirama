@@ -188,7 +188,13 @@
                             <constraint firstItem="TZu-tO-dg6" firstAttribute="top" secondItem="a7M-8a-JGV" secondAttribute="bottom" constant="8" id="zhE-MS-6il"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="🐙 Emojirama 🐙" id="qfh-5I-kUg"/>
+                    <navigationItem key="navigationItem" title="🐙 Emojirama 🐙" id="qfh-5I-kUg">
+                        <barButtonItem key="rightBarButtonItem" title="Copy" id="7It-xn-kH0">
+                            <connections>
+                                <action selector="copyEmoji:" destination="OWM-9R-dnA" id="Ajl-CF-UYz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="desc" destination="TZu-tO-dg6" id="5Ov-Hx-jHu"/>
                         <outlet property="tags" destination="UCC-6L-wd8" id="5RH-3l-wuq"/>
