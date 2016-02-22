@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        Fabric.with([Crashlytics.self()])
+        //Fabric.with([Crashlytics.self()])
         
         if let splitViewController = window?.rootViewController as? UISplitViewController {
             splitViewController.delegate = self
