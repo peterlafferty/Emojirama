@@ -45,8 +45,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if url.scheme == "emojirama" {
+            if let _ = url.host where url.host == "view" {
+                if let value = url.lastPathComponent {
+                    if let emoji = Emojirama().filter(byValue: value) {
+                        displayEmoji(emoji)
+                    }
+                }
+            }
+        }
+        return true
+    }
+    
     func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
-        print("Activity continued")
+        if userActivity.activityType == "com.peterlafferty.emojirama.view" {
+            if let userInfo = userActivity.userInfo {
+                if let value = userInfo["emoji.value"] as? String {
+                    if let emoji = Emojirama().filter(byValue: value) {
+                        displayEmoji(emoji)
+                    }
+                    
+                }
+            }
+        }
+        
         return true
     }
     
@@ -58,6 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 nil).instantiateViewControllerWithIdentifier("emojiViewController") as? ViewController {
                     viewController.emoji = emoji
                     let navController = UINavigationController(rootViewController: viewController)
+                    navController.toolbarHidden = false
                     splitViewController.showDetailViewController(navController, sender: self)
 
             }

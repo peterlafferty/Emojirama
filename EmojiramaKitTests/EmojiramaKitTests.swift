@@ -33,10 +33,47 @@ class EmojiramaTests: XCTestCase {
         
     }
     
-    
+    func testEmojiInitFail() {
+/*
+(lldb) po data
+▿ 8 elements
+▿ [0] : 2 elements
+- .0 : description
+- .1 : grinning face
+▿ [1] : 2 elements
+- .0 : type
+- .1 : emoji
+▿ [2] : 2 elements
+- .0 : id
+▿ [3] : 2 elements
+- .0 : tags
+▿ .1 : 3 elements
+- [0] : face
+- [1] : grin
+- [2] : person
+▿ [4] : 2 elements
+- .0 : code
+- .1 : U+1F600
+▿ [5] : 2 elements
+- .0 : value
+- .1 : 😀
+▿ [6] : 2 elements
+- .0 : version
+- .1 : V6.1ˣ
+▿ [7] : 2 elements
+- .0 : hasSkinTone
+
+(lldb)
+*/
+        let testData = [String:String]()
+        let emoji = Emoji(testData)
+        XCTAssertNil(emoji)
+    }
+
+
     func testTotalCount() {
         let emojirama = Emojirama()
-        
+
         XCTAssertEqual(1281, emojirama.unfilteredEmojis.count, "Wrong number of emoji loaded")
         
     }
@@ -77,5 +114,7 @@ class EmojiramaTests: XCTestCase {
             
         }
     }
+    
+
     
 }
