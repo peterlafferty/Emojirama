@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     var emoji: Emoji?
     let skinTones = ["🏿", "🏾", "🏽", "🏼", "🏻", ""]
     var currentSelectedValue = ""
+    var activity:NSUserActivity?
     
     @IBOutlet weak var value: UILabel!
     @IBOutlet weak var desc: UILabel!
@@ -77,6 +78,19 @@ class ViewController: UIViewController {
             self.version.text = ""
         }
         
+        if #available(iOS 9.0, *) {
+            activity = NSUserActivity(activityType: "com.peterlafferty.emojirama.view")
+            activity?.eligibleForHandoff = false
+            activity?.eligibleForPublicIndexing = false
+            activity?.eligibleForSearch = true
+            
+            activity?.title = "\(e.value): \(e.text)"
+            activity?.keywords = Set(e.tags)
+            activity?.keywords.insert("emoji")
+            activity?.userInfo = ["emoji.value":e.value]
+            
+            activity?.becomeCurrent()
+        }
     }
     
     override func didReceiveMemoryWarning() {

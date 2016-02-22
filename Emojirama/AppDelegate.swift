@@ -45,6 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        print("Activity continued")
+        return true
+    }
+    
     func displayEmoji(emoji:Emoji) {
 
         if let splitViewController = window?.rootViewController as? UISplitViewController {
