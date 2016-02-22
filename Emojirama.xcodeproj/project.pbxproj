@@ -23,6 +23,9 @@
 		272894751C0250650089F090 /* EmojiramaKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272894741C0250650089F090 /* EmojiramaKitTests.swift */; };
 		272894791C0250650089F090 /* EmojiramaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272894641C0250650089F090 /* EmojiramaKit.framework */; };
 		2728947A1C0250650089F090 /* EmojiramaKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 272894641C0250650089F090 /* EmojiramaKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		272894851C02512D0089F090 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272894821C02512D0089F090 /* Emoji.swift */; };
+		272894861C02512D0089F090 /* Emojirama.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272894831C02512D0089F090 /* Emojirama.swift */; };
+		272894871C02512D0089F090 /* emojis.json in Resources */ = {isa = PBXBuildFile; fileRef = 272894841C02512D0089F090 /* emojis.json */; };
 		278169811BBDDD3D005465D3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2781697F1BBDDD3D005465D3 /* Fabric.framework */; };
 		278169821BBDDD3D005465D3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278169801BBDDD3D005465D3 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +106,9 @@
 		2728946D1C0250650089F090 /* EmojiramaKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojiramaKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		272894741C0250650089F090 /* EmojiramaKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiramaKitTests.swift; sourceTree = "<group>"; };
 		272894761C0250650089F090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		272894821C02512D0089F090 /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		272894831C02512D0089F090 /* Emojirama.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emojirama.swift; sourceTree = "<group>"; };
+		272894841C02512D0089F090 /* emojis.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emojis.json; sourceTree = "<group>"; };
 		2781697F1BBDDD3D005465D3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		278169801BBDDD3D005465D3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -213,7 +219,10 @@
 		272894651C0250650089F090 /* EmojiramaKit */ = {
 			isa = PBXGroup;
 			children = (
+				272894821C02512D0089F090 /* Emoji.swift */,
+				272894831C02512D0089F090 /* Emojirama.swift */,
 				272894661C0250650089F090 /* EmojiramaKit.h */,
+				272894841C02512D0089F090 /* emojis.json */,
 				272894681C0250650089F090 /* Info.plist */,
 			);
 			path = EmojiramaKit;
@@ -428,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				272894871C02512D0089F090 /* emojis.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +500,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				272894851C02512D0089F090 /* Emoji.swift in Sources */,
+				272894861C02512D0089F090 /* Emojirama.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +647,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -652,6 +665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -717,6 +731,7 @@
 		2728947B1C0250660089F090 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -731,6 +746,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.EmojiramaKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -740,6 +756,7 @@
 		2728947C1C0250660089F090 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
