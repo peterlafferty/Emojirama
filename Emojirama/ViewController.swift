@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EmojiramaKit
 
 class ViewController: UIViewController {
     var emoji: Emoji?
@@ -67,7 +68,7 @@ class ViewController: UIViewController {
         
         self.toolbarItems = items
         
-        self.desc.text = "Description: " + e.description
+        self.desc.text = "Description: " + e.text
         self.tags.text = "Tags: " + e.tags.joinWithSeparator(", ")
         
         if e.version.isEmpty == false {
@@ -99,7 +100,7 @@ class ViewController: UIViewController {
         
         UIPasteboard.generalPasteboard().string = currentSelectedValue
 
-        let textToShare = "\(e.value), \(e.description) @emojirama https://appsto.re/ie/4b-q-.i"
+        let textToShare = "\(e.value), \(e.text) @emojirama https://appsto.re/ie/4b-q-.i"
         
         let objectsToShare = [textToShare, screenshot()]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)

@@ -31,7 +31,29 @@ class EmojiramaUITests: XCTestCase {
     }
     
     func testPaste() {
+
+        app.searchFields["Search All The Emojis"].tap()
+        app.searchFields["Search All The Emojis"].typeText("man")
+        app.buttons["Done"].tap()
         
+        app.collectionViews.staticTexts["👨"].tap()
+        app.toolbars.buttons["👨🏼"].tap()
+        app.buttons["Copy"].tap()
+        
+        let backButtons = app.navigationBars.childrenMatchingType(.Button).matchingIdentifier("Back")
+        backButtons.elementBoundByIndex(1).tap()
+
+        app.searchFields["Search All The Emojis"].buttons["Clear text"].tap()
+        app.searchFields["Search All The Emojis"].tap()
+        
+        app.searchFields["Search All The Emojis"].pressForDuration(1.2);
+        app.menuItems["Paste"].tap()
+        
+        //app.searchFields["Search All The Emojis"].typeText("👨🏼")
+        sleep(1)
+        XCTAssert(app.cells.staticTexts["👨"].exists, "👨 is shown")
+        XCTAssert(app.cells.staticTexts["🏼"].exists, "🏼 is shown")
+
     }
     
     func testExample() {

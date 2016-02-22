@@ -1,6 +1,8 @@
 import UIKit
+import EmojiramaKit
 
 class CollectionViewController: UIViewController {
+    var emojirama = Emojirama()
     var emojis = [Emoji]()
     var unfilteredEmojis = [Emoji]()
     var modifier = ""
@@ -22,30 +24,8 @@ class CollectionViewController: UIViewController {
         }
         
         self.view.backgroundColor = UIColor.whiteColor()
-        
-        if let path = NSBundle.mainBundle().pathForResource("emojis", ofType: "json") {
-            if let emojiData = NSData(contentsOfFile: path) {
-                
-                do {
-                    let jsonObject = try NSJSONSerialization.JSONObjectWithData(emojiData, options: [])
-                    
-                    if let jsonDict = jsonObject as? [NSDictionary] {
-                        for value in jsonDict {
-                            if let emoji = Emoji(value) {
-                                unfilteredEmojis.append(emoji)
-                            }
-                        }
-                    }
-                    
 
-                } catch let error as NSError {
-                    print("Failed to load: \(error.localizedDescription)")
-                }
-                
-            }
-        }
-
-        emojis = unfilteredEmojis
+        emojis = emojirama.unfilteredEmojis
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,8 +36,8 @@ class CollectionViewController: UIViewController {
         if segue.identifier == "showEmojiSegue" {
             if let navigationController = segue.destinationViewController as? UINavigationController {
                 if let controller = navigationController.topViewController as? ViewController {
-                    if let indexPath = self.collectionView?.indexPathsForSelectedItems() {
-                        controller.emoji = self.emojis[indexPath[0].row]
+                    if let indexPath = collectionView?.indexPathsForSelectedItems() {
+                        controller.emoji = emojis[indexPath[0].row]
                     }
                 }
             }
@@ -122,7 +102,7 @@ extension CollectionViewController: UICollectionViewDataSource {
         }
         
         
-        cell.label?.text = emojis[indexPath.row].description
+        cell.label?.text = emojis[indexPath.row].text
         
         return cell
     }
@@ -132,23 +112,7 @@ extension CollectionViewController: UICollectionViewDataSource {
 extension CollectionViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if searchText.isEmpty {
-            emojis = unfilteredEmojis
-        } else {
-            emojis = unfilteredEmojis.filter({ (emoji:Emoji) -> Bool in
-
-                if #available(iOS 9.0, *) {
-                    return emoji.description.localizedStandardContainsString(searchText)
-                        || emoji.tags.joinWithSeparator(", ").localizedStandardContainsString(searchText)
-                        || searchText.localizedStandardContainsString(emoji.value)
-                } else {
-                    return emoji.description.containsString(searchText)
-                        || emoji.tags.joinWithSeparator(", ").containsString(searchText)
-                        || searchText.containsString(emoji.value)
-                }
-                
-            })
-        }
+        emojis = emojirama.filter(searchText)
 
         collectionView.contentOffset = CGPointZero
         collectionView.reloadData()

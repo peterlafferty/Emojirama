@@ -22,7 +22,7 @@ class EmojiramaTests: XCTestCase {
     }
     
     func testExample() {
-        Emoji(NSDictionary())
+        //Emoji(NSDictionary())
     }
     
     func testPerformanceExample() {
