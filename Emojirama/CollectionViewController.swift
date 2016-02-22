@@ -134,9 +134,17 @@ extension CollectionViewController: UISearchBarDelegate {
             emojis = unfilteredEmojis
         } else {
             emojis = unfilteredEmojis.filter({ (emoji:Emoji) -> Bool in
-                return  emoji.description.localizedStandardContainsString(searchText)
-                    || emoji.tags.joinWithSeparator(", ").localizedStandardContainsString(searchText)
-                    || searchText.localizedStandardContainsString(emoji.value)
+
+                if #available(iOS 9.0, *) {
+                    return emoji.description.localizedStandardContainsString(searchText)
+                        || emoji.tags.joinWithSeparator(", ").localizedStandardContainsString(searchText)
+                        || searchText.localizedStandardContainsString(emoji.value)
+                } else {
+                    return emoji.description.containsString(searchText)
+                        || emoji.tags.joinWithSeparator(", ").containsString(searchText)
+                        || searchText.containsString(emoji.value)
+                }
+                
             })
         }
 
