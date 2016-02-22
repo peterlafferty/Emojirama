@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         let shareButton = UIBarButtonItem(
             barButtonSystemItem: .Action,
             target: self,
-            action: "share"
+            action: "share:"
         )
         items.append(shareButton)
         
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func share(){
+    func share(sender:AnyObject){
         guard let e = emoji else {
             return
         }
@@ -95,12 +95,14 @@ class ViewController: UIViewController {
         UIPasteboard.generalPasteboard().string = e.value
 
         let textToShare = "\(e.value), \(e.description) @emojirama https://appsto.re/ie/4b-q-.i"
-        print(textToShare)
         
         let objectsToShare = [textToShare, screenshot()]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        
-        self.presentViewController(activityVC, animated: true, completion: nil)
+      
+        if let shareButton = sender as? UIBarButtonItem {
+            activityVC.popoverPresentationController?.barButtonItem = shareButton
+            presentViewController(activityVC, animated: true, completion: nil)
+        }
     }
     
     func screenshot() -> NSData {

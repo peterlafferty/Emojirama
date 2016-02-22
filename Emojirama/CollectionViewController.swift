@@ -54,9 +54,11 @@ class CollectionViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showEmojiSegue" {
-            if let controller = segue.destinationViewController as? ViewController {
-                if let indexPath = self.collectionView?.indexPathsForSelectedItems() {
-                    controller.emoji = self.emojis[indexPath[0].row]
+            if let navigationController = segue.destinationViewController as? UINavigationController {
+                if let controller = navigationController.topViewController as? ViewController {
+                    if let indexPath = self.collectionView?.indexPathsForSelectedItems() {
+                        controller.emoji = self.emojis[indexPath[0].row]
+                    }
                 }
             }
         }

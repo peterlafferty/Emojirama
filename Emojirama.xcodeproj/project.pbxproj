@@ -14,12 +14,12 @@
 		1018D6A71BBA7BBC00DA3993 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1018D6A51BBA7BBC00DA3993 /* LaunchScreen.storyboard */; };
 		1018D6B21BBA7BBC00DA3993 /* EmojiramaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018D6B11BBA7BBC00DA3993 /* EmojiramaTests.swift */; };
 		1018D6BD1BBA7BBC00DA3993 /* EmojiramaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018D6BC1BBA7BBC00DA3993 /* EmojiramaUITests.swift */; };
-		10AB621F1BBA81D800D2A36B /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB621E1BBA81D800D2A36B /* Emoji.swift */; settings = {ASSET_TAGS = (); }; };
-		10AB62211BBA81E300D2A36B /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB62201BBA81E300D2A36B /* CollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		10AB62231BBA821D00D2A36B /* CellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB62221BBA821D00D2A36B /* CellCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		10AB62251BBA822300D2A36B /* emojis.json in Resources */ = {isa = PBXBuildFile; fileRef = 10AB62241BBA822300D2A36B /* emojis.json */; settings = {ASSET_TAGS = (); }; };
-		278169811BBDDD3D005465D3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2781697F1BBDDD3D005465D3 /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
-		278169821BBDDD3D005465D3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278169801BBDDD3D005465D3 /* Crashlytics.framework */; settings = {ASSET_TAGS = (); }; };
+		10AB621F1BBA81D800D2A36B /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB621E1BBA81D800D2A36B /* Emoji.swift */; };
+		10AB62211BBA81E300D2A36B /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB62201BBA81E300D2A36B /* CollectionViewController.swift */; };
+		10AB62231BBA821D00D2A36B /* CellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB62221BBA821D00D2A36B /* CellCollectionViewCell.swift */; };
+		10AB62251BBA822300D2A36B /* emojis.json in Resources */ = {isa = PBXBuildFile; fileRef = 10AB62241BBA822300D2A36B /* emojis.json */; };
+		278169811BBDDD3D005465D3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2781697F1BBDDD3D005465D3 /* Fabric.framework */; };
+		278169821BBDDD3D005465D3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278169801BBDDD3D005465D3 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -454,6 +454,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.Emojirama;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -470,6 +471,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.Emojirama;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

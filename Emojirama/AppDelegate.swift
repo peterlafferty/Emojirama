@@ -19,6 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Fabric.with([Crashlytics.self()])
+        
+        if let splitViewController = window?.rootViewController as? UISplitViewController {
+            splitViewController.delegate = self
+            splitViewController.preferredDisplayMode = .AllVisible
+            
+            splitViewController.preferredPrimaryColumnWidthFraction = 0.5
+            splitViewController.maximumPrimaryColumnWidth = splitViewController.view.bounds.size.width
+        }
 
         return true
     }
@@ -48,3 +56,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UISplitViewControllerDelegate {
+    // Collapse the secondary view controller onto the primary view controller.
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
+        //this stops the blank detail view controller from being shown on ipad portrait
+        return true
+    }
+    
+    // Separate the secondary view controller from the primary view controller.
+    func splitViewController(splitViewController: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController) -> UIViewController? {
+        return nil
+    }
+}
