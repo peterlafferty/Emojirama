@@ -17,9 +17,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var tags: UILabel!
     @IBOutlet weak var version: UILabel!
     
-    var shareDescription: String = ""
-    var shareValue: String = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,18 +27,13 @@ class ViewController: UIViewController {
         //self.title = e.value
         
         self.value.text = e.value
-        shareDescription = e.description
-        shareValue = e.value
 
         var items = [UIBarButtonItem]()
-        items.append(UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil))
-
-        //add button for sharing
-        let shareButton = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "share")
-        items.append(shareButton)
         
         if e.hasSkinTone {
             for tone in skinTones {
+                items.append(UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil))
+
                 let barButtonItem = UIBarButtonItem(
                     title: emoji!.value + tone,
                     style: UIBarButtonItemStyle.Plain,
@@ -58,7 +50,18 @@ class ViewController: UIViewController {
                     )
                 )
             }
+        } else {
+            //make sure the share button is on the right
+            items.append(UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil))
         }
+
+        //add button for sharing
+        let shareButton = UIBarButtonItem(
+            barButtonSystemItem: .Action,
+            target: self,
+            action: "share"
+        )
+        items.append(shareButton)
         
         self.toolbarItems = items
         
@@ -91,7 +94,8 @@ class ViewController: UIViewController {
         
         UIPasteboard.generalPasteboard().string = e.value
 
-        let textToShare = "\(shareValue), \(shareDescription) #emojirama https://t.co/ScA270Vt8y"
+        let textToShare = "\(e.value), \(e.description) @emojirama https://appsto.re/ie/4b-q-.i"
+        print(textToShare)
         
         let objectsToShare = [textToShare, screenshot()]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
@@ -105,8 +109,7 @@ class ViewController: UIViewController {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return UIImagePNGRepresentation(image)!
-        
+        return UIImageJPEGRepresentation(image, 0.7)!
     }
     
     @IBAction func copyEmoji(sender: AnyObject) {
