@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     var emoji: Emoji?
     let skinTones = ["🏿", "🏾", "🏽", "🏼", "🏻", ""]
+    var currentSelectedValue = ""
     
     @IBOutlet weak var value: UILabel!
     @IBOutlet weak var desc: UILabel!
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
         //self.title = e.value
         
         self.value.text = e.value
+        currentSelectedValue = e.value
 
         var items = [UIBarButtonItem]()
         
@@ -84,6 +86,9 @@ class ViewController: UIViewController {
     func updateSkinTone(sender:AnyObject) {
         if let button = sender as? UIBarButtonItem {
             self.value.text = button.title
+            if let value = button.title {
+                currentSelectedValue = value
+            }
         }
     }
     
@@ -92,7 +97,7 @@ class ViewController: UIViewController {
             return
         }
         
-        UIPasteboard.generalPasteboard().string = e.value
+        UIPasteboard.generalPasteboard().string = currentSelectedValue
 
         let textToShare = "\(e.value), \(e.description) @emojirama https://appsto.re/ie/4b-q-.i"
         
@@ -115,10 +120,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func copyEmoji(sender: AnyObject) {
-        guard let e = emoji else {
-            return
-        }
-        UIPasteboard.generalPasteboard().string = e.value
+        UIPasteboard.generalPasteboard().string = currentSelectedValue
     }
     
 }

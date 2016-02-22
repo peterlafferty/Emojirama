@@ -7,9 +7,11 @@
 //
 
 import XCTest
+@testable import Emojirama
 
 class EmojiramaUITests: XCTestCase {
-        
+    let app = XCUIApplication()
+    
     override func setUp() {
         super.setUp()
         
@@ -28,9 +30,89 @@ class EmojiramaUITests: XCTestCase {
         super.tearDown()
     }
     
+    func testPaste() {
+        
+    }
+    
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        app.searchFields["Search All The Emojis"].tap()
+        
+        app.searchFields["Search All The Emojis"].typeText("man")
+        app.buttons["Done"].tap()
+        
+        app.collectionViews.staticTexts["👨"].tap()
+        
+        XCTAssert(app.staticTexts["👨"].exists, "👨 is shown")
+        XCTAssert(app.staticTexts["Description: man"].exists, "description is shown")
+        XCTAssert(app.staticTexts["Tags: man, person"].exists)
+        XCTAssert(app.staticTexts["From Unicode: V6.0ʲ"].exists)
+
+        
+        XCTAssertEqual(app.toolbars.buttons.count, 7, "there should be 7 buttons")
+
+        app.toolbars.buttons["👨🏿"].tap()
+        XCTAssert(app.staticTexts["👨🏿"].exists, "👨🏿 is shown")
+
+        app.toolbars.buttons["👨🏼"].tap()
+        XCTAssert(app.staticTexts["👨🏼"].exists, "👨🏼 is shown")
+        
+        /*'👨🏿''👨🏾''👨🏽''👨🏼''👨🏻''👨'*/
+
+        app.buttons["Copy"].tap()
+        
+        let backButtons = app.navigationBars.childrenMatchingType(.Button).matchingIdentifier("Back")
+        backButtons.elementBoundByIndex(1).tap()
+
+        
+        app.searchFields["Search All The Emojis"].buttons["Clear text"].tap()
+        app.searchFields["Search All The Emojis"].tap()
+
+        app.searchFields["Search All The Emojis"].pressForDuration(1.2);
+        app.menuItems["Paste"].tap()
+
+        //app.searchFields["Search All The Emojis"].typeText("👨🏼")
+        sleep(1)
+        XCTAssert(app.cells.staticTexts["👨"].exists, "👨 is shown")
+        XCTAssert(app.cells.staticTexts["🏼"].exists, "🏼 is shown")
+        
+        app.searchFields["Search All The Emojis"].buttons["Clear text"].tap()
+        app.searchFields["Search All The Emojis"].tap()
+        
+        app.searchFields["Search All The Emojis"].typeText("💩")
+        app.collectionViews.staticTexts["💩"].tap()
+        
+        XCTAssert(app.staticTexts["💩"].exists, "💩 is shown")
+        XCTAssert(app.staticTexts["Description: pile of poo"].exists, "description is shown")
+        XCTAssert(app.staticTexts["Tags: comic, dung, face, monster, nature, object, poo, poop"].exists)
+        XCTAssert(app.staticTexts["From Unicode: V6.0ʲ"].exists)
+        XCTAssertEqual(app.toolbars.buttons.count, 1, "there should be 1 button")
+        
+        app.toolbars.buttons["Share"].tap()
+        app.buttons["Cancel"].tap()
+        backButtons.elementBoundByIndex(1).tap()
+
+        app.searchFields["Search All The Emojis"].buttons["Clear text"].tap()
+        app.searchFields["Search All The Emojis"].tap()
+        
+        app.searchFields["Search All The Emojis"].typeText("mán with gu")
+        app.buttons["Done"].tap()
+
+        XCTAssertEqual(app.toolbars.buttons.count, 6, "there should be 6 buttons")
+        app.toolbars.buttons["🏾"].tap()
+        XCTAssert(app.staticTexts["👲🏾"].exists, "👲🏾 is shown")
+        app.toolbars.buttons["Stop"].tap()
+        XCTAssert(app.staticTexts["👲"].exists, "👲 is shown")
+
+        
+        app.searchFields["Search All The Emojis"].buttons["Clear text"].tap()
+        app.searchFields["Search All The Emojis"].tap()
+        
+        app.searchFields["Search All The Emojis"].typeText("omgnothing")
+
+        
+        
+        
     }
     
 }
