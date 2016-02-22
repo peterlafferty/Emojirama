@@ -14,7 +14,7 @@ public class Emojirama {
     
     public init() {
 
-        if let path = NSBundle(identifier: "com.peterlafferty.Emojirama")?.pathForResource("emojis", ofType: "json") {
+        if let path = NSBundle(identifier: "com.peterlafferty.EmojiramaKit")?.pathForResource("emojis", ofType: "json") {
             if let emojiData = NSData(contentsOfFile: path) {
                 
                 do {

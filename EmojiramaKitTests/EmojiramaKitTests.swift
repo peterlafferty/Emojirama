@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import EmojiramaKit
+@testable import EmojiramaKit
 
 class EmojiramaTests: XCTestCase {
     
@@ -26,6 +26,13 @@ class EmojiramaTests: XCTestCase {
         XCTAssertNotNil(emoji, "why do this test?")
         
     }
+
+    func testEmojiramaInit() {
+        let emojirama = Emojirama()
+        XCTAssertGreaterThanOrEqual(emojirama.unfilteredEmojis.count, 1, "Emojis not loaded")
+        
+    }
+    
     
     func testTotalCount() {
         let emojirama = Emojirama()

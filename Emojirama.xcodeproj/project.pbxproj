@@ -16,7 +16,6 @@
 		1018D6BD1BBA7BBC00DA3993 /* EmojiramaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018D6BC1BBA7BBC00DA3993 /* EmojiramaUITests.swift */; };
 		10AB62211BBA81E300D2A36B /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB62201BBA81E300D2A36B /* CollectionViewController.swift */; };
 		10AB62231BBA821D00D2A36B /* CellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB62221BBA821D00D2A36B /* CellCollectionViewCell.swift */; };
-		10AB62251BBA822300D2A36B /* emojis.json in Resources */ = {isa = PBXBuildFile; fileRef = 10AB62241BBA822300D2A36B /* emojis.json */; };
 		272894671C0250650089F090 /* EmojiramaKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 272894661C0250650089F090 /* EmojiramaKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2728946E1C0250650089F090 /* EmojiramaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272894641C0250650089F090 /* EmojiramaKit.framework */; };
 		272894751C0250650089F090 /* EmojiramaKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272894741C0250650089F090 /* EmojiramaKitTests.swift */; };
@@ -120,7 +119,6 @@
 		1018D6BE1BBA7BBC00DA3993 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10AB62201BBA81E300D2A36B /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		10AB62221BBA821D00D2A36B /* CellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellCollectionViewCell.swift; sourceTree = "<group>"; };
-		10AB62241BBA822300D2A36B /* emojis.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emojis.json; sourceTree = "<group>"; };
 		272894641C0250650089F090 /* EmojiramaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EmojiramaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		272894661C0250650089F090 /* EmojiramaKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojiramaKit.h; sourceTree = "<group>"; };
 		272894681C0250650089F090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -221,7 +219,6 @@
 		1018D69B1BBA7BBC00DA3993 /* Emojirama */ = {
 			isa = PBXGroup;
 			children = (
-				10AB62241BBA822300D2A36B /* emojis.json */,
 				1018D69C1BBA7BBC00DA3993 /* AppDelegate.swift */,
 				1018D69E1BBA7BBC00DA3993 /* ViewController.swift */,
 				10AB62201BBA81E300D2A36B /* CollectionViewController.swift */,
@@ -485,7 +482,6 @@
 			files = (
 				1018D6A71BBA7BBC00DA3993 /* LaunchScreen.storyboard in Resources */,
 				1018D6A41BBA7BBC00DA3993 /* Assets.xcassets in Resources */,
-				10AB62251BBA822300D2A36B /* emojis.json in Resources */,
 				1018D6A21BBA7BBC00DA3993 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
