@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-5g-eKb">
+                            <searchBar contentMode="redraw" placeholder="Search All The Emojis" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-5g-eKb">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <animations/>
                                 <constraints>
@@ -140,7 +140,7 @@
             </objects>
             <point key="canvasLocation" x="1427" y="474"/>
         </scene>
-        <!--🐙 Emojirama 🐙-->
+        <!--View Controller-->
         <scene sceneID="ZSS-f4-TAE">
             <objects>
                 <viewController id="OWM-9R-dnA" customClass="ViewController" customModule="Emojirama" customModuleProvider="target" sceneMemberID="viewController">
@@ -201,7 +201,8 @@
                             <constraint firstItem="TZu-tO-dg6" firstAttribute="top" secondItem="a7M-8a-JGV" secondAttribute="bottom" constant="8" id="zhE-MS-6il"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="🐙 Emojirama 🐙" id="qfh-5I-kUg">
+                    <navigationItem key="navigationItem" id="qfh-5I-kUg">
+                        <barButtonItem key="backBarButtonItem" title=" " id="XXk-0o-KkB"/>
                         <barButtonItem key="rightBarButtonItem" title="Copy" id="7It-xn-kH0">
                             <connections>
                                 <action selector="copyEmoji:" destination="OWM-9R-dnA" id="Ajl-CF-UYz"/>
