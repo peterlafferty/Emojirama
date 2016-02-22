@@ -9,7 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
-
+import EmojiramaKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,7 +53,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(application: UIApplication, openURL url: NSURL, options: [String: AnyObject]) -> Bool {
+        if url.scheme == "emojirama" {
+            if let _ = url.host where url.host == "view" {
+                if let value = url.lastPathComponent {
+                    if let emoji = Emojirama().filter(byValue: value) {
+                        displayEmoji(emoji)
+                    }
+                }
+            }
+        }
+        return true
+    }
+    
+    
+    func displayEmoji(emoji:Emoji) {
+        print(emoji)
+        if let splitViewController = window?.rootViewController as? UISplitViewController {
+           
+//            if let viewController = UIStoryboard(name: "Main", bundle:
+//                nil).instantiateViewControllerWithIdentifier("bleurgh") as? ViewController {
+//                    viewController.schemeString = url.absoluteString
+//                    viewController.url = url
+//                    navController.viewControllers.append(viewController)
+//                    
+//            }
+            //self.window?.rootViewController = navController
+            
+            
+        }
+        
+    }
 }
 
 extension AppDelegate: UISplitViewControllerDelegate {

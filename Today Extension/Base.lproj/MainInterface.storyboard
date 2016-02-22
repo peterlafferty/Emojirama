@@ -24,6 +24,9 @@
                                 <state key="normal" title="Loading...">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="launchApplication:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="3mR-sH-aCT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
