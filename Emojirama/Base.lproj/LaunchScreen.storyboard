@@ -47,14 +47,14 @@
                 <splitViewController id="IQQ-RJ-MnW" sceneMemberID="viewController">
                     <connections>
                         <segue destination="ApD-q7-8kL" kind="relationship" relationship="masterViewController" id="ars-eo-B1v"/>
-                        <segue destination="tQt-Iy-uaY" kind="relationship" relationship="detailViewController" id="4IL-1z-a59"/>
+                        <segue destination="Drx-Vs-m07" kind="relationship" relationship="detailViewController" id="4IL-1z-a59"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QPE-aH-6mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1176" y="-194"/>
         </scene>
-        <!--View Controller-->
+        <!--🐙 Emojirama 🐙-->
         <scene sceneID="pqA-ZJ-Rt7">
             <objects>
                 <viewController id="tQt-Iy-uaY" sceneMemberID="viewController">
@@ -68,10 +68,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="🐙 Emojirama 🐙" id="APd-iY-iK9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o4p-06-2rO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49" y="-292"/>
+            <point key="canvasLocation" x="861" y="-292"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RUD-ng-LNx">
@@ -96,6 +97,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sP9-k9-LB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BOD-kX-ETA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Drx-Vs-m07" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YeH-bN-nlE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ZcN-H4-7Ro">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="tQt-Iy-uaY" kind="relationship" relationship="rootViewController" id="iMt-Gz-pTC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kcR-UG-nAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="49" y="-292"/>
         </scene>
     </scenes>
 </document>
