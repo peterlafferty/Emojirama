@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func displayEmoji(emoji:Emoji) {
-        print(emoji)
+
         if let splitViewController = window?.rootViewController as? UISplitViewController {
            
             if let viewController = UIStoryboard(name: "Main", bundle:
