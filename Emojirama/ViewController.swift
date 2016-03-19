@@ -138,5 +138,16 @@ class ViewController: UIViewController {
         UIPasteboard.generalPasteboard().string = currentSelectedValue
     }
     
+    @available(iOS 9, *)
+    override func previewActionItems() -> [UIPreviewActionItem] {
+        let copyAction = UIPreviewAction(title: "Copy", style: .Default, handler: { (_, viewController) -> Void in
+            guard let viewController = viewController as? ViewController,
+                emoji = viewController.emoji
+                else { return }
+            UIPasteboard.generalPasteboard().string = emoji.value
+        })
+        
+        return [copyAction]
+    }
 }
 
