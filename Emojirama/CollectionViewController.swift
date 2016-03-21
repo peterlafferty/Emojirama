@@ -28,6 +28,14 @@ class CollectionViewController: UIViewController {
         emojis = emojirama.unfilteredEmojis
     }
     
+    override func viewWillAppear(animated: Bool) {
+        if #available(iOS 9.0, *) {
+            if traitCollection.forceTouchCapability == .Available {
+                registerForPreviewingWithDelegate(self, sourceView: collectionView)
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -125,5 +133,20 @@ extension CollectionViewController: UISearchBarDelegate {
 
 extension CollectionViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
+    }
+}
+
+@available(iOS 9, *)
+extension CollectionViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+    }
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let emojiViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("emojiViewController") as? ViewController,
+            selectedEmojiIndexPath = collectionView.indexPathForItemAtPoint(location)
+            else { return nil }
+        
+        emojiViewController.emoji = emojis[selectedEmojiIndexPath.row]
+        return emojiViewController
     }
 }
