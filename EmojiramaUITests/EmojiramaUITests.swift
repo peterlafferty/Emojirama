@@ -67,8 +67,8 @@ class EmojiramaUITests: XCTestCase {
         
         XCTAssert(app.staticTexts["👨"].exists, "👨 is shown")
         XCTAssert(app.staticTexts["Description: man"].exists, "description is shown")
-        XCTAssert(app.staticTexts["Tags: man, person"].exists)
-        XCTAssert(app.staticTexts["From Unicode: V6.0ʲ"].exists)
+        XCTAssert(app.staticTexts["Tags: man"].exists)
+        XCTAssert(app.staticTexts["From Unicode: 2010ʲ"].exists)
 
         
         XCTAssertEqual(app.toolbars.buttons.count, 7, "there should be 7 buttons")
@@ -106,8 +106,8 @@ class EmojiramaUITests: XCTestCase {
         
         XCTAssert(app.staticTexts["💩"].exists, "💩 is shown")
         XCTAssert(app.staticTexts["Description: pile of poo"].exists, "description is shown")
-        XCTAssert(app.staticTexts["Tags: comic, dung, face, monster, nature, object, poo, poop"].exists)
-        XCTAssert(app.staticTexts["From Unicode: V6.0ʲ"].exists)
+        XCTAssert(app.staticTexts["Tags: comic, dung, face, monster, poo, poop"].exists)
+        XCTAssert(app.staticTexts["From Unicode: 2010ʲ"].exists)
         XCTAssertEqual(app.toolbars.buttons.count, 1, "there should be 1 button")
         
         app.toolbars.buttons["Share"].tap()
