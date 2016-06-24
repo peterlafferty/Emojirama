@@ -54,7 +54,7 @@ class CollectionViewController: UIViewController {
     }
     
     func hideKeyboard() {
-        UIApplication.sharedApplication().sendAction("resignFirstResponder", to:nil, from:nil, forEvent:nil)
+        UIApplication.sharedApplication().sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, forEvent:nil)
     }
 
     

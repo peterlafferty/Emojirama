@@ -42,7 +42,7 @@ class ViewController: UIViewController {
                     title: emoji!.value + tone,
                     style: UIBarButtonItemStyle.Plain,
                     target: self,
-                    action: "updateSkinTone:"
+                    action: #selector(ViewController.updateSkinTone(_:))
                 )
                 
                 items.append(barButtonItem)
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         let shareButton = UIBarButtonItem(
             barButtonSystemItem: .Action,
             target: self,
-            action: "share:"
+            action: #selector(ViewController.share(_:))
         )
         items.append(shareButton)
         
