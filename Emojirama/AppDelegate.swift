@@ -17,14 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+    func application(application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
         Fabric.with([Crashlytics.self()])
 
         if let splitViewController = window?.rootViewController as? UISplitViewController {
             splitViewController.delegate = self
             splitViewController.preferredDisplayMode = .AllVisible
-            
+
             splitViewController.preferredPrimaryColumnWidthFraction = 0.5
             splitViewController.maximumPrimaryColumnWidth = splitViewController.view.bounds.size.width
         }
@@ -44,8 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
-    
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+
+    func application(application: UIApplication, openURL url: NSURL,
+                     sourceApplication: String?, annotation: AnyObject) -> Bool {
         if url.scheme == "emojirama" {
             if let _ = url.host where url.host == "view" {
                 if let value = url.lastPathComponent {
@@ -57,26 +59,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
-    
-    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+
+    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity,
+                     restorationHandler: ([AnyObject]?) -> Void) -> Bool {
         if userActivity.activityType == "com.peterlafferty.emojirama.view" {
             if let userInfo = userActivity.userInfo {
                 if let value = userInfo["emoji.value"] as? String {
                     if let emoji = Emojirama().filter(byValue: value) {
                         displayEmoji(emoji)
                     }
-                    
+
                 }
             }
         }
-        
+
         return true
     }
-    
-    func displayEmoji(emoji:Emoji) {
+
+    func displayEmoji(emoji: Emoji) {
 
         if let splitViewController = window?.rootViewController as? UISplitViewController {
-           
+
             if let viewController = UIStoryboard(name: "Main", bundle:
                 nil).instantiateViewControllerWithIdentifier("emojiViewController") as? ViewController {
                     viewController.emoji = emoji
@@ -86,18 +89,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             }
         }
-        
+
     }
 }
 
 extension AppDelegate: UISplitViewControllerDelegate {
     // Collapse the secondary view controller onto the primary view controller.
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
+    func splitViewController(splitViewController: UISplitViewController,
+            collapseSecondaryViewController secondaryViewController: UIViewController,
+            ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
         //this stops the blank detail view controller from being shown on ipad portrait
         return true
     }
-    
+
     // Separate the secondary view controller from the primary view controller.
+    // swiftlint:disable:next line_length
     func splitViewController(splitViewController: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController primaryViewController: UIViewController) -> UIViewController? {
         return nil
     }

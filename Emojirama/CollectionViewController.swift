@@ -7,27 +7,27 @@ class CollectionViewController: UIViewController {
     var unfilteredEmojis = [Emoji]()
     var modifier = ""
 
-    
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.searchBar.returnKeyType = .Done
         self.searchBar.enablesReturnKeyAutomatically = false
-        
+
         self.collectionView?.backgroundColor = UIColor.whiteColor()
-        
+
         if let toolbarHeight = self.navigationController?.toolbar.frame.height {
             self.collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: toolbarHeight, right: 0)
         }
-        
+
         self.view.backgroundColor = UIColor.whiteColor()
 
         emojis = emojirama.unfilteredEmojis
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         if #available(iOS 9.0, *) {
             if traitCollection.forceTouchCapability == .Available {
@@ -35,7 +35,7 @@ class CollectionViewController: UIViewController {
             }
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -52,12 +52,13 @@ class CollectionViewController: UIViewController {
         }
         self.hideKeyboard()
     }
-    
+
     func hideKeyboard() {
-        UIApplication.sharedApplication().sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, forEvent:nil)
+        UIApplication.sharedApplication().sendAction(
+            #selector(UIResponder.resignFirstResponder), to:nil, from:nil, forEvent:nil)
     }
 
-    
+
     // MARK: IBActions
     @IBAction func updateModifier(sender: AnyObject) {
         modifier = ""
@@ -65,11 +66,11 @@ class CollectionViewController: UIViewController {
             if let text = barButtonItem.title {
                 modifier = text
             }
-            
+
         }
         collectionView?.reloadData()
     }
-    
+
     @IBAction func clearModifier(sender: AnyObject) {
         modifier = ""
         collectionView?.reloadData()
@@ -88,44 +89,47 @@ extension CollectionViewController: UIScrollViewDelegate {
 // MARK: UICollectionViewDataSource
 private let reuseIdentifier = "Cell"
 extension CollectionViewController: UICollectionViewDataSource {
-    
+
     // MARK: UICollectionViewData
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-    
-    
+
+
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return emojis.count
     }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CellCollectionViewCell
-        
-        
-        if emojis[indexPath.row].hasSkinTone {
-            cell.text?.text = emojis[indexPath.row].value + modifier
-        } else {
-            cell.text?.text = emojis[indexPath.row].value
+
+    func collectionView(collectionView: UICollectionView,
+                        cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(
+            reuseIdentifier, forIndexPath: indexPath)
+
+
+        if let c = cell as? CellCollectionViewCell {
+            if emojis[indexPath.row].hasSkinTone {
+                c.text?.text = emojis[indexPath.row].value + modifier
+            } else {
+                c.text?.text = emojis[indexPath.row].value
+            }
+            c.label?.text = emojis[indexPath.row].text
         }
-        
-        
-        cell.label?.text = emojis[indexPath.row].text
-        
+
+
         return cell
     }
-    
+
 }
 
 extension CollectionViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        
+
         emojis = emojirama.filter(searchText)
 
-        collectionView.contentOffset = CGPointZero
+        collectionView.contentOffset = CGPoint.zero
         collectionView.reloadData()
     }
-    
+
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.hideKeyboard()
     }
@@ -138,14 +142,17 @@ extension CollectionViewController: UISearchResultsUpdating {
 
 @available(iOS 9, *)
 extension CollectionViewController: UIViewControllerPreviewingDelegate {
-    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+    func previewingContext(previewingContext: UIViewControllerPreviewing,
+                           commitViewController viewControllerToCommit: UIViewController) {
     }
-    
-    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+
+    func previewingContext(previewingContext: UIViewControllerPreviewing,
+                           viewControllerForLocation location: CGPoint) -> UIViewController? {
+        // swiftlint:disable:next line_length
         guard let emojiViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("emojiViewController") as? ViewController,
             selectedEmojiIndexPath = collectionView.indexPathForItemAtPoint(location)
             else { return nil }
-        
+
         emojiViewController.emoji = emojis[selectedEmojiIndexPath.row]
         return emojiViewController
     }

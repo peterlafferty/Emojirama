@@ -13,38 +13,124 @@ class ViewController: UIViewController {
     var emoji: Emoji?
     let skinTones = ["🏿", "🏾", "🏽", "🏼", "🏻", ""]
     var currentSelectedValue = ""
-    var activity:NSUserActivity?
-    
+    var activity: NSUserActivity?
+
     @IBOutlet weak var value: UILabel!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var tags: UILabel!
     @IBOutlet weak var version: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         guard let e = emoji else {
             return
         }
-        
+
         //self.title = e.value
-        
-        self.value.text = e.value
+
+        value.text = e.value
         currentSelectedValue = e.value
 
+
+
+        toolbarItems = createToolbarItems(e)
+
+        desc.text = "Description: " + e.text
+        tags.text = "Tags: " + e.tags.joinWithSeparator(", ")
+
+        if e.version.isEmpty == false {
+            version.text = "From Unicode: " + e.version
+        } else {
+            version.text = ""
+        }
+
+        if #available(iOS 9.0, *) {
+            activity = NSUserActivity(activityType: "com.peterlafferty.emojirama.view")
+            activity?.eligibleForHandoff = false
+            activity?.eligibleForPublicIndexing = false
+            activity?.eligibleForSearch = true
+
+            activity?.title = "\(e.value) - \(e.text)"
+            activity?.keywords = Set(e.tags)
+            activity?.keywords.insert("emoji")
+            activity?.userInfo = ["emoji.value":e.value]
+
+            activity?.becomeCurrent()
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    func updateSkinTone(sender: AnyObject) {
+        if let button = sender as? UIBarButtonItem {
+            self.value.text = button.title
+            if let value = button.title {
+                currentSelectedValue = value
+            }
+        }
+    }
+
+    func share(sender: AnyObject) {
+        guard let e = emoji else {
+            return
+        }
+
+        UIPasteboard.generalPasteboard().string = currentSelectedValue
+
+        let textToShare = "\(e.value), \(e.text) @emojirama https://appsto.re/ie/4b-q-.i"
+
+        let objectsToShare = [textToShare, screenshot()]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+
+        if let shareButton = sender as? UIBarButtonItem {
+            activityVC.popoverPresentationController?.barButtonItem = shareButton
+            presentViewController(activityVC, animated: true, completion: nil)
+        }
+    }
+
+    func screenshot() -> NSData {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 1.0)
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return UIImageJPEGRepresentation(image, 0.7)!
+    }
+
+    @IBAction func copyEmoji(sender: AnyObject) {
+        UIPasteboard.generalPasteboard().string = currentSelectedValue
+    }
+
+    @available(iOS 9, *)
+    override func previewActionItems() -> [UIPreviewActionItem] {
+        let copyAction = UIPreviewAction(title: "Copy", style: .Default, handler: { (_, viewController) -> Void in
+            guard let viewController = viewController as? ViewController,
+                emoji = viewController.emoji
+                else { return }
+            UIPasteboard.generalPasteboard().string = emoji.value
+        })
+
+        return [copyAction]
+    }
+
+    private func createToolbarItems(emoji: Emoji) -> [UIBarButtonItem] {
         var items = [UIBarButtonItem]()
-        
-        if e.hasSkinTone {
+
+        if emoji.hasSkinTone {
             for tone in skinTones {
                 items.append(UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil))
 
                 let barButtonItem = UIBarButtonItem(
-                    title: emoji!.value + tone,
+                    title: emoji.value + tone,
                     style: UIBarButtonItemStyle.Plain,
                     target: self,
                     action: #selector(ViewController.updateSkinTone(_:))
                 )
-                
+
                 items.append(barButtonItem)
                 items.append(
                     UIBarButtonItem(
@@ -66,88 +152,7 @@ class ViewController: UIViewController {
             action: #selector(ViewController.share(_:))
         )
         items.append(shareButton)
-        
-        self.toolbarItems = items
-        
-        self.desc.text = "Description: " + e.text
-        self.tags.text = "Tags: " + e.tags.joinWithSeparator(", ")
-        
-        if e.version.isEmpty == false {
-            self.version.text = "From Unicode: " + e.version
-        } else {
-            self.version.text = ""
-        }
-        
-        if #available(iOS 9.0, *) {
-            activity = NSUserActivity(activityType: "com.peterlafferty.emojirama.view")
-            activity?.eligibleForHandoff = false
-            activity?.eligibleForPublicIndexing = false
-            activity?.eligibleForSearch = true
-            
-            activity?.title = "\(e.value) - \(e.text)"
-            activity?.keywords = Set(e.tags)
-            activity?.keywords.insert("emoji")
-            activity?.userInfo = ["emoji.value":e.value]
-            
-            activity?.becomeCurrent()
-        }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func updateSkinTone(sender:AnyObject) {
-        if let button = sender as? UIBarButtonItem {
-            self.value.text = button.title
-            if let value = button.title {
-                currentSelectedValue = value
-            }
-        }
-    }
-    
-    func share(sender:AnyObject){
-        guard let e = emoji else {
-            return
-        }
-        
-        UIPasteboard.generalPasteboard().string = currentSelectedValue
 
-        let textToShare = "\(e.value), \(e.text) @emojirama https://appsto.re/ie/4b-q-.i"
-        
-        let objectsToShare = [textToShare, screenshot()]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-      
-        if let shareButton = sender as? UIBarButtonItem {
-            activityVC.popoverPresentationController?.barButtonItem = shareButton
-            presentViewController(activityVC, animated: true, completion: nil)
-        }
-    }
-    
-    func screenshot() -> NSData {
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 1.0)
-        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return UIImageJPEGRepresentation(image, 0.7)!
-    }
-    
-    @IBAction func copyEmoji(sender: AnyObject) {
-        UIPasteboard.generalPasteboard().string = currentSelectedValue
-    }
-    
-    @available(iOS 9, *)
-    override func previewActionItems() -> [UIPreviewActionItem] {
-        let copyAction = UIPreviewAction(title: "Copy", style: .Default, handler: { (_, viewController) -> Void in
-            guard let viewController = viewController as? ViewController,
-                emoji = viewController.emoji
-                else { return }
-            UIPasteboard.generalPasteboard().string = emoji.value
-        })
-        
-        return [copyAction]
+        return items
     }
 }
-
