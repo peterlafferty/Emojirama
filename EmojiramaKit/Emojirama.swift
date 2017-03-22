@@ -8,17 +8,18 @@
 
 import UIKit
 
-public class Emojirama {
-    public var unfilteredEmojis = [Emoji]()
-    public var modifiers = ["🏿", "🏾", "🏽", "🏼", "🏻", ""]
-    private let identifier = "com.peterlafferty.EmojiramaKit"
+open class Emojirama {
+    open var unfilteredEmojis = [Emoji]()
+    open var modifiers = ["🏿", "🏾", "🏽", "🏼", "🏻", ""]
+    fileprivate let identifier = "com.peterlafferty.EmojiramaKit"
     public init() {
+        let identifier = "com.peterlafferty.EmojiramaKit"
 
-        if let path = NSBundle(identifier: identifier)?.pathForResource("emojis", ofType: "json") {
-            if let emojiData = NSData(contentsOfFile: path) {
+        if let path = Bundle(identifier: identifier)?.path(forResource: "emojis", ofType: "json") {
+            if let emojiData = try? Data(contentsOf: URL(fileURLWithPath: path)) {
 
                 do {
-                    let jsonObject = try NSJSONSerialization.JSONObjectWithData(emojiData, options: [])
+                    let jsonObject = try JSONSerialization.jsonObject(with: emojiData, options: [])
 
                     if let jsonDict = jsonObject as? [NSDictionary] {
                         for value in jsonDict {
@@ -27,7 +28,6 @@ public class Emojirama {
                             }
                         }
                     }
-
 
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")
@@ -38,7 +38,7 @@ public class Emojirama {
 
     }
 
-    public func filter(text: String) -> [Emoji] {
+    open func filter(_ text: String) -> [Emoji] {
         var emoji: [Emoji]
 
         if text.isEmpty {
@@ -47,14 +47,14 @@ public class Emojirama {
             emoji = unfilteredEmojis.filter({ (emoji: Emoji) -> Bool in
                 if #available(iOS 9.0, *) {
 
-                    return emoji.text.localizedStandardContainsString(text)
-                        || emoji.tags.joinWithSeparator(", ").localizedStandardContainsString(text)
-                        || text.localizedStandardContainsString(emoji.value)
+                    return emoji.text.localizedStandardContains(text)
+                        || emoji.tags.joined(separator: ", ").localizedStandardContains(text)
+                        || text.localizedStandardContains(emoji.value)
 
                 } else {
-                    return emoji.text.containsString(text)
-                        || emoji.tags.joinWithSeparator(", ").containsString(text)
-                        || text.containsString(emoji.value)
+                    return emoji.text.contains(text)
+                        || emoji.tags.joined(separator: ", ").contains(text)
+                        || text.contains(emoji.value)
                 }
 
             })
@@ -63,14 +63,14 @@ public class Emojirama {
         return emoji
     }
 
-    public func filter(byValue text: String) -> Emoji? {
+    open func filter(byValue text: String) -> Emoji? {
         var emoji: [Emoji]
 
         emoji = unfilteredEmojis.filter({ (emoji: Emoji) -> Bool in
             if #available(iOS 9.0, *) {
-                return emoji.value.localizedStandardContainsString(text)
+                return emoji.value.localizedStandardContains(text)
             } else {
-                return emoji.value.containsString(text)
+                return emoji.value.contains(text)
             }
 
         })
@@ -81,7 +81,7 @@ public class Emojirama {
         return nil
     }
 
-    public func random() -> Emoji {
+    open func random() -> Emoji {
         let index = arc4random_uniform(UInt32(unfilteredEmojis.count))
         return unfilteredEmojis[Int(index)]
 

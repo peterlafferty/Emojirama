@@ -20,19 +20,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     var emoji = Emoji()
 
     var displayString: String {
-        get {
-            if emoji.value.isEmpty {
-                return "loading..."
-            } else {
-                return "What does \(emoji.value) mean?"
-            }
+        if emoji.value.isEmpty {
+            return "loading..."
+        } else {
+            return "What does \(emoji.value) mean?"
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         emoji = loadEmoji()
-        openAppButton.setTitle(displayString, forState: UIControlState.Normal)
+        openAppButton.setTitle(displayString, for: UIControlState())
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,36 +38,38 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Dispose of any resources that can be recreated.
     }
 
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
-        completionHandler(NCUpdateResult.NoData)
+        completionHandler(NCUpdateResult.noData)
     }
 
-
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
     }
 
-    @IBAction func launchApplication(sender: AnyObject) {
-        let emojiString = emoji.value.stringByAddingPercentEncodingWithAllowedCharacters(
-            NSCharacterSet.alphanumericCharacterSet())!
+    @IBAction func launchApplication(_ sender: AnyObject) {
+        let emojiString = emoji.value.addingPercentEncoding(
+            withAllowedCharacters: CharacterSet.alphanumerics)!
         let string = "emojirama://view/\(emojiString)/?modifier=1"
-        if let url = NSURL(string: string) {
-            extensionContext?.openURL(url, completionHandler: nil)
+        if let url = URL(string: string) {
+            extensionContext?.open(url, completionHandler: nil)
         }
     }
 
     func loadEmoji() -> Emoji {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         let emoji: Emoji
 
-        if let savedEmojiValue: String = defaults.stringForKey("emoji"),
-            saveDate = defaults.objectForKey("saveDate") as? NSDate
-            where Int(NSDate().timeIntervalSinceDate(saveDate) / 60) < TodayViewController.numberOfMinutes {
+        //only update today extension if time has passed
+        if let savedEmojiValue: String = defaults.string(forKey: "emoji"),
+            let saveDate = defaults.object(
+                forKey: "saveDate") as? Date,
+                Int(Date().timeIntervalSince(saveDate) / 60
+                ) < TodayViewController.numberOfMinutes {
             let filteredEmoji = emojirama.filter(savedEmojiValue)
             if filteredEmoji.count > 0 {
                 emoji = filteredEmoji[0]
@@ -79,8 +79,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         } else {
             emoji = emojirama.random()
 
-            defaults.setObject(emoji.value, forKey: "emoji")
-            defaults.setObject(NSDate(), forKey: "saveDate")
+            defaults.set(emoji.value, forKey: "emoji")
+            defaults.set(Date(), forKey: "saveDate")
             defaults.synchronize()
 
         }

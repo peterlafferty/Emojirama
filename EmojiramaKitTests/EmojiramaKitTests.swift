@@ -65,11 +65,10 @@ class EmojiramaTests: XCTestCase {
 
 (lldb)
 */
-        let testData = [String:String]()
-        let emoji = Emoji(testData)
+        let testData = [String: String]()
+        let emoji = Emoji(testData as NSDictionary)
         XCTAssertNil(emoji)
     }
-
 
     func testTotalCount() {
         let emojirama = Emojirama()
@@ -108,13 +107,10 @@ class EmojiramaTests: XCTestCase {
 
     func testPerformanceOfSetup() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
-            Emojirama().filter("nature")
-
+            _ = Emojirama().filter("nature")
         }
     }
-
-
 
 }

@@ -32,13 +32,13 @@ class EmojiramaUITests: XCTestCase {
         app.toolbars.buttons["👨🏼"].tap()
         app.buttons["Copy"].tap()
 
-        let backButtons = app.navigationBars.childrenMatchingType(.Button).matchingIdentifier("Back")
-        backButtons.elementBoundByIndex(1).tap()
+        let backButtons = app.navigationBars.children(matching: .button).matching(identifier: "Back")
+        backButtons.element(boundBy: 1).tap()
 
         app.searchFields["Search All The Emojis"].buttons["Clear text"].tap()
         app.searchFields["Search All The Emojis"].tap()
 
-        app.searchFields["Search All The Emojis"].pressForDuration(1.2)
+        app.searchFields["Search All The Emojis"].press(forDuration: 1.2)
         app.menuItems["Paste"].tap()
 
         //app.searchFields["Search All The Emojis"].typeText("👨🏼")
@@ -62,7 +62,6 @@ class EmojiramaUITests: XCTestCase {
         XCTAssert(app.staticTexts["Tags: man"].exists)
         XCTAssert(app.staticTexts["From Unicode: 2010ʲ"].exists)
 
-
         XCTAssertEqual(app.toolbars.buttons.count, 7, "there should be 7 buttons")
 
         app.toolbars.buttons["👨🏿"].tap()
@@ -75,14 +74,13 @@ class EmojiramaUITests: XCTestCase {
 
         app.buttons["Copy"].tap()
 
-        let backButtons = app.navigationBars.childrenMatchingType(.Button).matchingIdentifier("Back")
-        backButtons.elementBoundByIndex(1).tap()
-
+        let backButtons = app.navigationBars.children(matching: .button).matching(identifier: "Back")
+        backButtons.element(boundBy: 1).tap()
 
         app.searchFields["Search All The Emojis"].buttons["Clear text"].tap()
         app.searchFields["Search All The Emojis"].tap()
 
-        app.searchFields["Search All The Emojis"].pressForDuration(1.2)
+        app.searchFields["Search All The Emojis"].press(forDuration: 1.2)
         app.menuItems["Paste"].tap()
 
         //app.searchFields["Search All The Emojis"].typeText("👨🏼")
@@ -91,7 +89,6 @@ class EmojiramaUITests: XCTestCase {
         XCTAssert(app.cells.staticTexts["🏼"].exists, "🏼 is shown")
 
     }
-
 
     func testSearchForPoo() {
         sleep(1)
@@ -106,10 +103,10 @@ class EmojiramaUITests: XCTestCase {
         XCTAssert(app.staticTexts["From Unicode: 2010ʲ"].exists)
         XCTAssertEqual(app.toolbars.buttons.count, 1, "there should be 1 button")
 
-        let backButtons = app.navigationBars.childrenMatchingType(.Button).matchingIdentifier("Back")
+        let backButtons = app.navigationBars.children(matching: .button).matching(identifier: "Back")
         app.toolbars.buttons["Share"].tap()
         app.buttons["Cancel"].tap()
-        backButtons.elementBoundByIndex(1).tap()
+        backButtons.element(boundBy: 1).tap()
 
     }
 
