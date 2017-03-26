@@ -13,7 +13,6 @@ public struct Emoji {
 
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
     public init?(_ data: NSDictionary) {
 
         guard let id = data["id"] as? Int else {
@@ -53,19 +52,26 @@ public struct Emoji {
 
         self.tags = [String]()
 
-        if let tags = data["tags"] as? [String] {
-            for tag in tags {
-                if !tag.isEmpty {
-                    self.tags.append(tag)
-                }
-            }
-        }
+        initTags(data)
+        initTones(data)
+    }
 
+    private mutating func initTones(_ data: NSDictionary) {
         if hasSkinTone {
             self.tones.append(value)
             if let tones = data["tones"] as? [String] {
                 for tone in tones {
                     self.tones.append(tone)
+                }
+            }
+        }
+    }
+
+    private mutating func initTags(_ data: NSDictionary) {
+        if let tags = data["tags"] as? [String] {
+            for tag in tags {
+                if !tag.isEmpty {
+                    self.tags.append(tag)
                 }
             }
         }
