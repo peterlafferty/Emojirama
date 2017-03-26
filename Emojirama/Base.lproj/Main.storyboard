@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vfi-H8-8pJ">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vfi-H8-8pJ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--🐙 Emojirama 🐙-->
@@ -15,12 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="eOy-yi-6hN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1Ar-WW-3vs">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search All The Emojis" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-5g-eKb">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <animations/>
+                                <rect key="frame" x="-4" y="64" width="383" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="WHJ-Ky-PkT"/>
                                 </constraints>
@@ -30,8 +33,7 @@
                                 </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="025-zM-ARH">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
-                                <animations/>
+                                <rect key="frame" x="-4" y="108" width="383" height="559"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="63c-xA-v3R">
                                     <size key="itemSize" width="96" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -48,24 +50,21 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🐙" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-Xl-Mc6">
                                                     <rect key="frame" x="0.0" y="0.0" width="96" height="76"/>
-                                                    <animations/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="69"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="4" height="4"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="smiling face with open mouth and tightly-closed eyes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Mx-cu-FB9">
                                                     <rect key="frame" x="8" y="76" width="80" height="52"/>
-                                                    <animations/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <animations/>
                                         <connections>
                                             <outlet property="label" destination="4Mx-cu-FB9" id="3SX-uG-deo"/>
                                             <outlet property="text" destination="mhi-Xl-Mc6" id="apn-qQ-f5H"/>
@@ -79,8 +78,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="025-zM-ARH" secondAttribute="trailing" constant="-20" id="Jjg-Br-Nwv"/>
                             <constraint firstItem="I1K-5g-eKb" firstAttribute="leading" secondItem="1Ar-WW-3vs" secondAttribute="leadingMargin" constant="-20" id="Ka5-5f-kC0"/>
@@ -91,43 +89,7 @@
                             <constraint firstItem="025-zM-ARH" firstAttribute="top" secondItem="I1K-5g-eKb" secondAttribute="bottom" id="xeA-QM-7lT"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="🏿" id="tMn-YX-oI3">
-                            <connections>
-                                <action selector="updateModifier:" destination="IKv-80-Nip" id="e3b-48-Siw"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Zpk-Fu-MiR"/>
-                        <barButtonItem title="🏾" id="9ZF-7L-31n">
-                            <connections>
-                                <action selector="updateModifier:" destination="IKv-80-Nip" id="hby-uN-Qy3"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Y0v-Oq-LSg"/>
-                        <barButtonItem title="🏽" id="ljQ-1r-Ppc">
-                            <connections>
-                                <action selector="updateModifier:" destination="IKv-80-Nip" id="91z-zZ-pqu"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="p79-Yp-00X"/>
-                        <barButtonItem title="🏼" id="VBp-P6-add">
-                            <connections>
-                                <action selector="updateModifier:" destination="IKv-80-Nip" id="7Wi-N0-Ofd"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="hLs-Tk-r0J"/>
-                        <barButtonItem title="🏻" id="Osg-Vm-uqn">
-                            <connections>
-                                <action selector="updateModifier:" destination="IKv-80-Nip" id="E5A-EU-FRw"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="aUc-59-IhS"/>
-                        <barButtonItem systemItem="stop" id="hBN-5H-8JZ">
-                            <connections>
-                                <action selector="clearModifier:" destination="IKv-80-Nip" id="WCf-zC-aos"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="🐙 Emojirama 🐙" id="SQH-YM-uVL">
                         <barButtonItem key="backBarButtonItem" title="Back" id="TVG-fw-4wm"/>
                     </navigationItem>
@@ -149,44 +111,39 @@
                         <viewControllerLayoutGuide type="bottom" id="dYS-hN-E2y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vVq-M9-VRZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="a7M-8a-JGV">
-                                <rect key="frame" x="236" y="72" width="129" height="154"/>
-                                <animations/>
+                                <rect key="frame" x="117.5" y="72" width="140" height="154"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="129"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="4" height="4"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZu-tO-dg6">
-                                <rect key="frame" x="20" y="234" width="560" height="32.5"/>
-                                <animations/>
+                                <rect key="frame" x="16" y="234" width="343" height="32.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCC-6L-wd8">
-                                <rect key="frame" x="20" y="274" width="560" height="20.5"/>
-                                <animations/>
+                                <rect key="frame" x="16" y="274" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unicode Version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoS-rt-4iE">
-                                <rect key="frame" x="20" y="303" width="560" height="21"/>
-                                <animations/>
+                                <rect key="frame" x="16" y="303" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Fc1-fn-zAd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="UCC-6L-wd8" firstAttribute="top" secondItem="TZu-tO-dg6" secondAttribute="bottom" constant="8" id="8c3-yb-ViA"/>
                             <constraint firstItem="a7M-8a-JGV" firstAttribute="centerX" secondItem="vVq-M9-VRZ" secondAttribute="centerX" id="Bhb-gn-n7F"/>
@@ -236,18 +193,16 @@
         <!--Navigation Controller-->
         <scene sceneID="epB-PX-dLo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="1BY-9F-GbK" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1BY-9F-GbK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="R3S-ie-g4F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="SfM-wV-vm7">
-                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </toolbar>
                     <connections>
                         <segue destination="IKv-80-Nip" kind="relationship" relationship="rootViewController" id="gEJ-63-yNO"/>
@@ -265,13 +220,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AVo-ce-vPG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="KK6-Pi-iaE">
-                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </toolbar>
                     <connections>
                         <segue destination="OWM-9R-dnA" kind="relationship" relationship="rootViewController" id="esw-be-BBj"/>

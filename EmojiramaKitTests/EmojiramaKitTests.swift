@@ -73,7 +73,7 @@ class EmojiramaTests: XCTestCase {
     func testTotalCount() {
         let emojirama = Emojirama()
 
-        XCTAssertEqual(1376, emojirama.unfilteredEmojis.count, "Wrong number of emoji loaded")
+        XCTAssertEqual(1489, emojirama.unfilteredEmojis.count, "Wrong number of emoji loaded")
 
     }
 
@@ -97,7 +97,7 @@ class EmojiramaTests: XCTestCase {
 
     func testFilterWithEmptyString() {
         let emojirama = Emojirama()
-        XCTAssertEqual(1376, emojirama.filter("").count, "Wrong number of emoji loaded")
+        XCTAssertEqual(1489, emojirama.filter("").count, "Wrong number of emoji loaded")
     }
 
     func testRandom() {

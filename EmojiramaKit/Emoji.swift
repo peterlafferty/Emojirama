@@ -7,11 +7,13 @@ public struct Emoji {
     public var type: String = ""
     public var tags: [String] = [String]()
     public var hasSkinTone: Bool  = false
+    public var tones: [String] = [String]()
 
     public init() {
 
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     public init?(_ data: NSDictionary) {
 
         guard let id = data["id"] as? Int else {
@@ -55,6 +57,15 @@ public struct Emoji {
             for tag in tags {
                 if !tag.isEmpty {
                     self.tags.append(tag)
+                }
+            }
+        }
+
+        if hasSkinTone {
+            self.tones.append(value)
+            if let tones = data["tones"] as? [String] {
+                for tone in tones {
+                    self.tones.append(tone)
                 }
             }
         }

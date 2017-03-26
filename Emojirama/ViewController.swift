@@ -11,7 +11,6 @@ import EmojiramaKit
 
 class ViewController: UIViewController {
     var emoji: Emoji?
-    let skinTones = ["🏿", "🏾", "🏽", "🏼", "🏻", ""]
     var currentSelectedValue = ""
     var activity: NSUserActivity?
 
@@ -119,11 +118,11 @@ class ViewController: UIViewController {
         var items = [UIBarButtonItem]()
 
         if emoji.hasSkinTone {
-            for tone in skinTones {
+            for tone in emoji.tones {
                 items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
 
                 let barButtonItem = UIBarButtonItem(
-                    title: emoji.value + tone,
+                    title: tone,
                     style: UIBarButtonItemStyle.plain,
                     target: self,
                     action: #selector(ViewController.updateSkinTone(_:))
