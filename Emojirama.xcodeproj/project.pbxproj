@@ -434,11 +434,13 @@
 					};
 					1018D6AC1BBA7BBC00DA3993 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = DM9UPCM3N4;
 						LastSwiftMigration = 0810;
 						TestTargetID = 1018D6981BBA7BBC00DA3993;
 					};
 					1018D6B71BBA7BBC00DA3993 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = DM9UPCM3N4;
 						LastSwiftMigration = 0810;
 						TestTargetID = 1018D6981BBA7BBC00DA3993;
 					};
@@ -446,9 +448,11 @@
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = DM9UPCM3N4;
 						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
 					};
 					2728946C1C0250650089F090 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = DM9UPCM3N4;
 						LastSwiftMigration = 0810;
 						TestTargetID = 1018D6981BBA7BBC00DA3993;
 					};
@@ -807,6 +811,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = DM9UPCM3N4;
 				INFOPLIST_FILE = EmojiramaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.EmojiramaTests;
@@ -820,6 +825,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = DM9UPCM3N4;
 				INFOPLIST_FILE = EmojiramaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.EmojiramaTests;
@@ -832,6 +838,7 @@
 		1018D6C81BBA7BBC00DA3993 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = DM9UPCM3N4;
 				INFOPLIST_FILE = EmojiramaUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -846,6 +853,7 @@
 		1018D6C91BBA7BBC00DA3993 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = DM9UPCM3N4;
 				INFOPLIST_FILE = EmojiramaUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -863,7 +871,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -891,7 +899,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -916,6 +924,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = DM9UPCM3N4;
 				INFOPLIST_FILE = EmojiramaKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -930,6 +939,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = DM9UPCM3N4;
 				INFOPLIST_FILE = EmojiramaKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -945,6 +955,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = DM9UPCM3N4;
 				INFOPLIST_FILE = "Today Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -961,6 +972,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = DM9UPCM3N4;
 				INFOPLIST_FILE = "Today Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
